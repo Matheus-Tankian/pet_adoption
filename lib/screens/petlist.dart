@@ -13,9 +13,9 @@ class PetList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      reverse: true,
+      scrollDirection: Axis.vertical,
       child: SizedBox(
-        height: 400,
+        height: 450,
         width: 500,
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

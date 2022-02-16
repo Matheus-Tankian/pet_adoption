@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_adoption/models/pet_model.dart';
+import 'package:pet_adoption/screens/petlist.dart';
 
 class Details extends StatelessWidget {
   const Details({Key? key, required this.petList, required this.index})
@@ -21,6 +22,8 @@ class Details extends StatelessWidget {
                   child: Image.network(petList[index!].image),
                 ),
                 Positioned(
+                  // top: 10,
+                  // left: 10,
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back_ios_new_rounded),
                     onPressed: () => Navigator.pop(context),
@@ -64,7 +67,30 @@ class Details extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                petList[index!].desc,
+                textAlign: TextAlign.justify,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.purple[400],
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 100,
+                  ),
+                ),
+                onPressed: () => print('Enquire'),
+                child: const Text('Enquire'),
+              ),
+            ),
           ],
         ),
       ),

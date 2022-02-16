@@ -53,42 +53,44 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Row(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: Column(
+              children: [
+                Column(
                   children: [
-                    IconButton(
-                      onPressed: () => {},
-                      icon: const Icon(
-                        Icons.menu,
-                      ),
-                    ),
-                    const Spacer(),
-                    const CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/avatar.png'),
-                      backgroundColor: Colors.transparent,
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () => {},
+                          icon: const Icon(
+                            Icons.menu,
+                          ),
+                        ),
+                        const Spacer(),
+                        const CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage('assets/avatar.png'),
+                          backgroundColor: Colors.transparent,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ),
-              Expanded(
-                flex: 12,
-                child: Column(
-                  children: [
-                    const Search(),
-                    const SizedBox(height: 20),
-                    CategoryList(catList: catList),
-                    PetList(petList: petList),
-                  ],
+                Container(
+                  child: Column(
+                    children: [
+                      const Search(),
+                      const SizedBox(height: 20),
+                      CategoryList(catList: catList),
+                      PetList(petList: petList),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
