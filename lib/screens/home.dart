@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_adoption/models/pet_model.dart';
+import 'package:pet_adoption/screens/petlist.dart';
 import 'package:pet_adoption/screens/search.dart';
 
 import 'category_list.dart';
@@ -83,48 +84,7 @@ class Home extends StatelessWidget {
                     const Search(),
                     const SizedBox(height: 20),
                     CategoryList(catList: catList),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: SizedBox(
-                        height: 500,
-                        width: 500,
-                        child: GridView.builder(
-                          //physics: NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                          ),
-                          itemCount: petList.length,
-                          itemBuilder: (context, index) => Container(
-                            height: 500,
-                            width: 500,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white70,
-                            ),
-                            child: Column(
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20)),
-                                  child: Image.network(petList[index].image),
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  '${petList[index].name} - ${petList[index].age} Yrs',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    PetList(petList: petList),
                   ],
                 ),
               ),
