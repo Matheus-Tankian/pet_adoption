@@ -29,7 +29,7 @@ class PetList extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        Details(petList: petList, index: index))),
+                        Details(index: index))),
             child: Container(
               height: 500,
               width: 500,

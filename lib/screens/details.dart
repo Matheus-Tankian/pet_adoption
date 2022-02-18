@@ -1,16 +1,19 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:pet_adoption/models/pet_model.dart';
+import 'package:get/instance_manager.dart';
+import 'package:pet_adoption/controllers/controller.dart';
 import 'package:pet_adoption/screens/petlist.dart';
 
 class Details extends StatelessWidget {
-  const Details({Key? key, required this.petList, required this.index})
-      : super(key: key);
+  const Details({Key? key, required this.index}) : super(key: key);
 
-  final List<PetModel> petList;
   final int? index;
 
   @override
   Widget build(BuildContext context) {
+    final _controller = Get.find<Controller>();
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -19,7 +22,7 @@ class Details extends StatelessWidget {
               children: [
                 Container(
                   alignment: Alignment.topCenter,
-                  child: Image.network(petList[index!].image),
+                  child: Image.network(_controller.petList[index!].image),
                 ),
                 Positioned(
                   // top: 10,
@@ -39,7 +42,7 @@ class Details extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        petList[index!].name,
+                        _controller.petList[index!].name,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 40,
@@ -47,7 +50,7 @@ class Details extends StatelessWidget {
                       ),
                       const SizedBox(height: 2),
                       Text(
-                        petList[index!].breed,
+                        _controller.petList[index!].breed,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -58,7 +61,7 @@ class Details extends StatelessWidget {
                   const Spacer(),
                   Chip(
                     label: Text(
-                      '${petList[index!].age} years',
+                      '${_controller.petList[index!].age} years',
                       style: const TextStyle(
                         color: Colors.white,
                       ),
@@ -71,7 +74,7 @@ class Details extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                petList[index!].desc,
+                _controller.petList[index!].desc,
                 textAlign: TextAlign.justify,
                 style: const TextStyle(fontSize: 16),
               ),
@@ -87,7 +90,7 @@ class Details extends StatelessWidget {
                     horizontal: 100,
                   ),
                 ),
-                onPressed: () => print('Enquire'),
+                onPressed: () => _controller.enquirePetsPopup(index),
                 child: const Text('Enquire'),
               ),
             ),
