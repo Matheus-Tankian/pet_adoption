@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:pet_adoption/controllers/controller.dart';
-import 'package:pet_adoption/models/pet_model.dart';
 import 'package:pet_adoption/screens/petlist.dart';
 import 'package:pet_adoption/screens/search.dart';
 
